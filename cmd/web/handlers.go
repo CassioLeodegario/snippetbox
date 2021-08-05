@@ -5,7 +5,6 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"path/filepath"
 	"strconv"
 )
 
@@ -14,8 +13,14 @@ func home(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	filePrefix, _ := filepath.Abs("../../ui/html/")
-	ts, err := template.ParseFiles(filePrefix + "/home.page.tmpl")
+
+	files := []string{
+		"../../ui/html/home.page.tmpl",
+		"../../ui/html/base.layout.tmpl",
+	}
+
+	//filePrefix, _ := filepath.Abs("../../ui/html/")
+	ts, err := template.ParseFiles(files...)
 	if err != nil {
 		log.Println(err.Error())
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
