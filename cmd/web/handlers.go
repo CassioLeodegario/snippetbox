@@ -20,14 +20,6 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// data := &templateData{Snippets: s}
-
-	// files := []string{
-	// 	"../../ui/html/home.page.tmpl",
-	// 	"../../ui/html/base.layout.tmpl",
-	// 	"../../ui/html/footer.partial.tmpl",
-	// }
-
 	app.render(w, r, "home.page.tmpl", &templateData{
 		Snippets: s,
 	})
