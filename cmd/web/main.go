@@ -25,6 +25,10 @@ type application struct {
 	users         *mysql.UserModel
 }
 
+type contextKey string
+
+var contextKeyUser = contextKey("user")
+
 func main() {
 	addr := flag.String("addr", ":4000", "HTTP network address")
 
